@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: producer-dr
+  namespace: app
+spec:
+  host: producer
+
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
+      
+      localityLbSetting:
+        enabled: true
+        failover:
+        - from: "europe-west1"
+          to: "us-central1"
+          
+        - from: "us-central1"
+          to: "europe-west1"
+    tls:
+      mode: ISTIO_MUTUAL

@@ -1,0 +1,18 @@
+# Referencia: https://docs.solo.io/gloo-mesh-enterprise/main/istio/manual/namespaces/#persona-driven-configuration-management
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: asm-gateway
+  labels:
+    istio-injection: enabled
+    istio.io/rev: asm-managed 
+  annotations:
+    mesh.cloud.google.com/proxy: '{"managed":"true"}'
+    description: "Aloja los gateways de Istio (ingress, egress, eastwest)"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-config
+  annotations:
+    description: "Almacena la configuración del data plane a nivel de malla (VirtualServices, DestinationRules)."
