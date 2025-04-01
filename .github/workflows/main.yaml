@@ -1,4 +1,4 @@
-name: Validate Kubernetes Manifests
+name: Validate Istio Manifests
 
 on:
   pull_request:
